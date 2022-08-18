@@ -1,18 +1,11 @@
-﻿Console.Write("Введите число a: ");
-int number_a = Convert.ToInt32(Console.ReadLine());
+﻿Console.Write("Введите число: ");
+int number = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Введите число b: ");
-int number_b = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите число c: ");
-int number_c = Convert.ToInt32(Console.ReadLine());
-
-int max = number_a;
-if(number_b > max) {
-    max = number_b;
+if(number % 2 == 0) {
+    Console.Write($"Число {number} - чётное");
 }
-if(number_c > max) {
-    max = number_c;
+else {
+    Console.Write($"Число {number} - нечётное");
 }
 
-Console.Write($"Максимальное число: {max}");
+
