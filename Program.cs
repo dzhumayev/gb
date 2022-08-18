@@ -1,11 +1,6 @@
 ﻿Console.Write("Введите число: ");
 int number = Convert.ToInt32(Console.ReadLine());
 
-if(number % 2 == 0) {
-    Console.Write($"Число {number} - чётное");
+for(int i = 2; i <= number; i = i + 2) {
+    Console.WriteLine(i);
 }
-else {
-    Console.Write($"Число {number} - нечётное");
-}
-
-
