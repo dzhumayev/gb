@@ -1,11 +1,14 @@
-﻿System.Console.Write("Введите трёхзначное число: ");
+﻿System.Console.Write("Введите число: ");
 String input = Console.ReadLine();
 
-int secondDigit = getSecondDigit(Convert.ToInt32(input));
+if (input.Length > 2) {
+    int thirdDigit = getThirdDigit(Convert.ToInt32(input));
+    System.Console.WriteLine(thirdDigit);
+} else {
+    System.Console.WriteLine("Третьей цифры нет.");
+}
 
-System.Console.WriteLine(secondDigit);
-
-int getSecondDigit(int number) {
-    return (number % 100) / 10;
+int getThirdDigit(int number) {
+    return Convert.ToInt32(number.ToString().Substring(2, 1));
 }
 
