@@ -1,6 +1,11 @@
-﻿Console.Write("Введите число: ");
-int number = Convert.ToInt32(Console.ReadLine());
+﻿System.Console.Write("Введите трёхзначное число: ");
+String input = Console.ReadLine();
 
-for(int i = 2; i <= number; i = i + 2) {
-    Console.WriteLine(i);
+int secondDigit = getSecondDigit(Convert.ToInt32(input));
+
+System.Console.WriteLine(secondDigit);
+
+int getSecondDigit(int number) {
+    return (number % 100) / 10;
 }
+
