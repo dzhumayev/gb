@@ -1,14 +1,24 @@
-﻿System.Console.Write("Введите число: ");
-String input = Console.ReadLine();
+﻿System.Console.Write("Введите цифру, обозначающую день недели: ");
+int number = Convert.ToInt32(Console.ReadLine());
 
-if (input.Length > 2) {
-    int thirdDigit = getThirdDigit(Convert.ToInt32(input));
-    System.Console.WriteLine(thirdDigit);
-} else {
-    System.Console.WriteLine("Третьей цифры нет.");
+if (number >= 1 && number <= 7) {
+    if (IsHoliday(number)) {
+        System.Console.WriteLine($"День {number} - выходной");
+    }
+    else {
+        System.Console.WriteLine($"День {number} - будний");
+    }
+} 
+else {
+    System.Console.WriteLine($"День {number} - не существует");
 }
 
-int getThirdDigit(int number) {
-    return Convert.ToInt32(number.ToString().Substring(2, 1));
+bool IsHoliday(int number) {
+    return number switch {
+        6 => true,
+        7 => true,
+        _ => false
+    };
 }
+
 
