@@ -16,7 +16,7 @@ void FillMatrixSpiral(int[,] matrix, int fillNumber)
             matrix[row, col] = fillNumber++;
         }
 
-        for (col = GetLastColIndex() - offset, row = offset; row < GetLastRowIndex() - offset; row++)
+        for (row = offset, col = GetLastColIndex() - offset; row < GetLastRowIndex() - offset; row++)
         {
             matrix[row, col] = fillNumber++;
         }
@@ -26,7 +26,7 @@ void FillMatrixSpiral(int[,] matrix, int fillNumber)
             matrix[row, col] = fillNumber++;
         }
 
-        for (col = offset, row = GetLastRowIndex() - offset; row > offset; row--)
+        for (row = GetLastRowIndex() - offset, col = offset; row > offset; row--)
         {
             matrix[row, col] = fillNumber++;
         }
