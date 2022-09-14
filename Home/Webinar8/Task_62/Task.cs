@@ -1,36 +1,32 @@
-int[,] matrix = new int[5, 5];
+int[,] matrix = new int[4, 4];
 FillMatrixSpiral(matrix, fillNumber: 20);
 PrintMatrix(matrix);
 
 
 void FillMatrixSpiral(int[,] matrix, int fillNumber)
 {
-    bool matrixOdd = (matrix.GetLength(0) / 2 != 0);
-    int limitOffset = (GetLastRowIndex(matrix) / 2);
+    bool matrixOdd = (matrix.GetLength(0) % 2 != 0);
+    int limitOffset = (GetLastRowIndex() / 2);
     int row, col;
 
     for (int offset = 0; offset <= limitOffset; offset++)
     {
-        row = offset;
-        for (col = offset; col < GetLastColIndex(matrix) - offset; col++)
+        for (row = offset, col = offset; col < GetLastColIndex() - offset; col++)
         {
             matrix[row, col] = fillNumber++;
         }
 
-        col = GetLastColIndex(matrix) - offset;
-        for (row = offset; row < GetLastRowIndex(matrix) - offset; row++)
+        for (col = GetLastColIndex() - offset, row = offset; row < GetLastRowIndex() - offset; row++)
         {
             matrix[row, col] = fillNumber++;
         }
 
-        row = GetLastRowIndex(matrix) - offset;
-        for (col = GetLastColIndex(matrix) - offset; col > offset; col--)
+        for (row = GetLastRowIndex() - offset, col = GetLastColIndex() - offset; col > offset; col--)
         {
             matrix[row, col] = fillNumber++;
         }
 
-        col = offset;
-        for (row = GetLastRowIndex(matrix) - offset; row > offset; row--)
+        for (col = offset, row = GetLastRowIndex() - offset; row > offset; row--)
         {
             matrix[row, col] = fillNumber++;
         }
@@ -40,16 +36,16 @@ void FillMatrixSpiral(int[,] matrix, int fillNumber)
             matrix[offset, offset] = fillNumber;
         }
     }
-}
 
-int GetLastRowIndex(int[,] matrix)
-{
-    return matrix.GetUpperBound(0);
-}
+    int GetLastRowIndex()
+    {
+        return matrix.GetUpperBound(0);
+    }
 
-int GetLastColIndex(int[,] matrix)
-{
-    return matrix.GetUpperBound(1);
+    int GetLastColIndex()
+    {
+        return matrix.GetUpperBound(1);
+    }
 }
 
 void PrintMatrix(int[,] matrix)
@@ -62,18 +58,4 @@ void PrintMatrix(int[,] matrix)
         }
         System.Console.WriteLine();
     }
-}
-
-void PrintArray(double[] array)
-{
-    System.Console.Write(array[0]);
-    for (int i = 1; i < array.Length; i++)
-    {
-        System.Console.Write($" {array[i].ToString("00.00")}");
-    }
-}
-
-void PrintWrongMessage()
-{
-    System.Console.WriteLine("Некорректный ввод");
 }
