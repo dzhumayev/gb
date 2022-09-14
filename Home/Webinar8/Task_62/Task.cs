@@ -1,4 +1,4 @@
-int[,] matrix = new int[4, 4];
+int[,] matrix = new int[5, 5];
 FillMatrixSpiral(matrix, fillNumber: 20);
 PrintMatrix(matrix);
 
@@ -11,44 +11,28 @@ void FillMatrixSpiral(int[,] matrix, int fillNumber)
 
     for (int offset = 0; offset <= limitOffset; offset++)
     {
-        while (true)
+        row = offset;
+        for (col = offset; col < GetLastColIndex(matrix) - offset; col++)
         {
-            row = offset;
-            for (col = offset; col < GetLastColIndex(matrix) - offset; col++)
-            {
-                matrix[row, col] = fillNumber++;
-            }
-            break;
+            matrix[row, col] = fillNumber++;
         }
 
-        while (true)
+        col = GetLastColIndex(matrix) - offset;
+        for (row = offset; row < GetLastRowIndex(matrix) - offset; row++)
         {
-            col = GetLastColIndex(matrix) - offset;
-            for (row = offset; row < GetLastRowIndex(matrix) - offset; row++)
-            {
-                matrix[row, col] = fillNumber++;
-            }
-            break;
+            matrix[row, col] = fillNumber++;
         }
 
-        while (true)
+        row = GetLastRowIndex(matrix) - offset;
+        for (col = GetLastColIndex(matrix) - offset; col > offset; col--)
         {
-            row = GetLastRowIndex(matrix) - offset;
-            for (col = GetLastColIndex(matrix) - offset; col > offset; col--)
-            {
-                matrix[row, col] = fillNumber++;
-            }
-            break;
+            matrix[row, col] = fillNumber++;
         }
 
-        while (true)
+        col = offset;
+        for (row = GetLastRowIndex(matrix) - offset; row > offset; row--)
         {
-            col = offset;
-            for (row = GetLastRowIndex(matrix) - offset; row > offset; row--)
-            {
-                matrix[row, col] = fillNumber++;
-            }
-            break;
+            matrix[row, col] = fillNumber++;
         }
 
         if (offset == limitOffset && matrixOdd)
