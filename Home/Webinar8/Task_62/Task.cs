@@ -7,39 +7,44 @@ void FillMatrixSpiral(int[,] matrix, int fillNumber)
 {
     bool matrixOdd = (matrix.GetLength(0) / 2 != 0);
     int limitOffset = (GetLastRowIndex(matrix) / 2);
+    int row, col;
 
     for (int offset = 0; offset <= limitOffset; offset++)
     {
-        for (int row = offset; row == offset;)
+        while (true)
         {
-            for (int col = offset; col < GetLastColIndex(matrix) - offset; col++)
+            row = offset;
+            for (col = offset; col < GetLastColIndex(matrix) - offset; col++)
             {
                 matrix[row, col] = fillNumber++;
             }
             break;
         }
 
-        for (int col = (GetLastColIndex(matrix) - offset); col == (GetLastColIndex(matrix) - offset);)
+        while (true)
         {
-            for (int row = offset; row < GetLastRowIndex(matrix) - offset; row++)
+            col = GetLastColIndex(matrix) - offset;
+            for (row = offset; row < GetLastRowIndex(matrix) - offset; row++)
             {
                 matrix[row, col] = fillNumber++;
             }
             break;
         }
 
-        for (int row = (GetLastRowIndex(matrix) - offset); row == (GetLastRowIndex(matrix) - offset);)
+        while (true)
         {
-            for (int col = GetLastColIndex(matrix) - offset; col > offset; col--)
+            row = GetLastRowIndex(matrix) - offset;
+            for (col = GetLastColIndex(matrix) - offset; col > offset; col--)
             {
                 matrix[row, col] = fillNumber++;
             }
             break;
         }
 
-        for (int col = offset; col == offset;)
+        while (true)
         {
-            for (int row = GetLastRowIndex(matrix) - offset; row > offset; row--)
+            col = offset;
+            for (row = GetLastRowIndex(matrix) - offset; row > offset; row--)
             {
                 matrix[row, col] = fillNumber++;
             }
