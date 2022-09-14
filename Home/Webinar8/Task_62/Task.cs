@@ -1,35 +1,49 @@
 
 int[,] matrix = new int[4, 4];
 Console.WriteLine("Создана матрица 4x4");
-FillMatrixSpiral(matrix, startValue: 10);
+FillMatrixSpiral(matrix, startValue: 20);
 PrintMatrix(matrix);
 
 
 void FillMatrixSpiral(int[,] matrix, int startValue)
 {
-    for (int irow = 0; irow <= GetLastRowIndex(matrix); irow++)
+    for (int offset = 0; offset <= GetLastRowIndex(matrix) / 2; offset++)
     {
-        for (int jcol = 0; jcol < GetLastColIndex(matrix); jcol++)
+        for (int row = offset; row == offset;)
         {
-            matrix[irow, jcol] = startValue++;
+            for (int col = 0 + offset; col < GetLastColIndex(matrix) - offset; col++)
+            {
+                matrix[row, col] = startValue++;
+            }
+            break;
         }
 
-        for (int krow = 0; krow < GetLastRowIndex(matrix); krow++)
+        for (int col = (GetLastColIndex(matrix) - offset); col == (GetLastColIndex(matrix) - offset);)
         {
-            matrix[krow, GetLastColIndex(matrix)] = startValue++;
+            for (int row = 0 + offset; row < GetLastRowIndex(matrix); row++)
+            {
+                matrix[row, col] = startValue++;
+            }
+            break;
         }
 
-        for (int lcol = GetLastColIndex(matrix); lcol > 0; lcol--)
+        for (int row = (GetLastRowIndex(matrix) - offset); row == (GetLastRowIndex(matrix) - offset);)
         {
-            matrix[GetLastRowIndex(matrix), lcol] = startValue++;
+            for (int col = GetLastColIndex(matrix) - offset; col > (0 + offset); col--)
+            {
+                matrix[row, col] = startValue++;
+            }
+            break;
         }
 
-        for (int mrow = GetLastRowIndex(matrix); mrow > 0; mrow--)
+        for (int col = (0 + offset); col == (0 + offset);)
         {
-            matrix[mrow, 0] = startValue++;
+            for (int row = GetLastRowIndex(matrix) - offset; row > 0 + offset; row--)
+            {
+                matrix[row, col] = startValue++;
+            }
+            break;
         }
-
-        break;
     }
 }
 
