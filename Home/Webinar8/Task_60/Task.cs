@@ -2,7 +2,7 @@ Console.Write("Введите количество строк мартицы: ")
 bool rowsIsNumber = int.TryParse(Console.ReadLine(), out int rows);
 Console.Write("Введите количество столбцов матрицы: ");
 bool colsIsNumber = int.TryParse(Console.ReadLine(), out int cols);
-Console.Write("Введите количество столбцов матрицы: ");
+Console.Write("Задайте глубину матрицы матрицы: ");
 bool depthIsNumber = int.TryParse(Console.ReadLine(), out int depth);
 
 if (rowsIsNumber && colsIsNumber && depthIsNumber)

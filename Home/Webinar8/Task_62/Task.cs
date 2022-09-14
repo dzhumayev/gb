@@ -1,48 +1,54 @@
-
 int[,] matrix = new int[4, 4];
-Console.WriteLine("Создана матрица 4x4");
-FillMatrixSpiral(matrix, startValue: 20);
+FillMatrixSpiral(matrix, fillNumber: 20);
 PrintMatrix(matrix);
 
 
-void FillMatrixSpiral(int[,] matrix, int startValue)
+void FillMatrixSpiral(int[,] matrix, int fillNumber)
 {
-    for (int offset = 0; offset <= GetLastRowIndex(matrix) / 2; offset++)
+    bool matrixOdd = (matrix.GetLength(0) / 2 != 0);
+    int limitOffset = (GetLastRowIndex(matrix) / 2);
+
+    for (int offset = 0; offset <= limitOffset; offset++)
     {
         for (int row = offset; row == offset;)
         {
-            for (int col = 0 + offset; col < GetLastColIndex(matrix) - offset; col++)
+            for (int col = offset; col < GetLastColIndex(matrix) - offset; col++)
             {
-                matrix[row, col] = startValue++;
+                matrix[row, col] = fillNumber++;
             }
             break;
         }
 
         for (int col = (GetLastColIndex(matrix) - offset); col == (GetLastColIndex(matrix) - offset);)
         {
-            for (int row = 0 + offset; row < GetLastRowIndex(matrix); row++)
+            for (int row = offset; row < GetLastRowIndex(matrix) - offset; row++)
             {
-                matrix[row, col] = startValue++;
+                matrix[row, col] = fillNumber++;
             }
             break;
         }
 
         for (int row = (GetLastRowIndex(matrix) - offset); row == (GetLastRowIndex(matrix) - offset);)
         {
-            for (int col = GetLastColIndex(matrix) - offset; col > (0 + offset); col--)
+            for (int col = GetLastColIndex(matrix) - offset; col > offset; col--)
             {
-                matrix[row, col] = startValue++;
+                matrix[row, col] = fillNumber++;
             }
             break;
         }
 
-        for (int col = (0 + offset); col == (0 + offset);)
+        for (int col = offset; col == offset;)
         {
-            for (int row = GetLastRowIndex(matrix) - offset; row > 0 + offset; row--)
+            for (int row = GetLastRowIndex(matrix) - offset; row > offset; row--)
             {
-                matrix[row, col] = startValue++;
+                matrix[row, col] = fillNumber++;
             }
             break;
+        }
+
+        if (offset == limitOffset && matrixOdd)
+        {
+            matrix[offset, offset] = fillNumber;
         }
     }
 }

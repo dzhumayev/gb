@@ -9,7 +9,7 @@ if (rowsIsNumber && colsIsNumber)
     int[,] matrix = GetMatrixWithRandomValues(rows, cols, minValue: 10, maxValue: 99);
     PrintMatrix(matrix);
 
-    System.Console.WriteLine(new string('-', 50));
+    System.Console.WriteLine();
 
     SortRowsDescending(matrix);
     PrintMatrix(matrix);
